@@ -1,0 +1,47 @@
+Manifest-Version: 1.0
+Export-Package: org.wso2.carbon.dssapi.core;uses:="org.wso2.carbon.dss
+ api.util,org.apache.axiom.om.impl.builder,org.wso2.carbon.context,org
+ .wso2.carbon.service.mgt,org.apache.axiom.om";version="4.3.0.SNAPSHOT
+ ",org.wso2.carbon.dssapi.handler;uses:="org.apache.axis2,org.wso2.car
+ bon.apimgt.interceptor,org.wso2.carbon.apimgt.interceptor.utils,org.a
+ pache.commons.logging,org.wso2.carbon.apimgt.core.gateway,org.apache.
+ axis2.context,org.apache.axis2.handlers,org.wso2.carbon.apimgt.impl.u
+ tils,org.apache.axis2.description,org.wso2.carbon.apimgt.core.authent
+ icate,org.apache.axis2.engine,org.wso2.carbon.apimgt.api,org.wso2.car
+ bon.apimgt.impl.dao,javax.cache,org.wso2.carbon.apimgt.interceptor.va
+ lve,javax.servlet.http";version="4.3.0.SNAPSHOT",org.wso2.carbon.dssa
+ pi.util;uses:="org.wso2.carbon.apimgt.api.model,org.wso2.carbon.apimg
+ t.api,org.wso2.carbon.apimgt.impl.internal,org.wso2.carbon.apimgt.imp
+ l";version="4.3.0.SNAPSHOT"
+Ignore-Package: org.wso2.carbon.dataservices.ui.beans,org.wso2.carbon.
+ dataservices.core.engine,org.wso2.carbon.dataservices.core.admin
+Built-By: Maduz
+Tool: Bnd-1.43.0
+Bundle-Name: org.wso2.carbon.dssapi.core
+Created-By: Apache Maven Bundle Plugin
+DynamicImport-Package: *
+Build-Jdk: 1.6.0_65
+Bundle-Version: 4.3.0.SNAPSHOT
+Bnd-LastModified: 1418192833923
+Bundle-ManifestVersion: 2
+Bundle-Description: WSO2 Data Services API Publisher Core Bundle
+Import-Package: javax.cache;resolution:=optional;version="[1.0,2)",jav
+ ax.servlet.http;resolution:=optional;version="[2.6,3)",org.apache.axi
+ om.om;resolution:=optional;version="[1.2,2)",org.apache.axiom.om.impl
+ .builder;resolution:=optional;version="[1.2,2)",org.apache.axis2;vers
+ ion="[1.6.1.wso2v11-SNAPSHOT,1.7.0)",org.apache.axis2.context;version
+ ="[1.6.1.wso2v11-SNAPSHOT,1.7.0)",org.apache.axis2.description;versio
+ n="[1.6.1.wso2v11-SNAPSHOT,1.7.0)",org.apache.axis2.engine;version="[
+ 1.6.1.wso2v11-SNAPSHOT,1.7.0)",org.apache.axis2.handlers;version="[1.
+ 6.1.wso2v11-SNAPSHOT,1.7.0)",org.apache.commons.logging;resolution:=o
+ ptional;version="[1.2,2)",org.wso2.carbon.apimgt.api,org.wso2.carbon.
+ apimgt.api.model,org.wso2.carbon.apimgt.core.authenticate,org.wso2.ca
+ rbon.apimgt.core.gateway,org.wso2.carbon.apimgt.impl;version="[4.3,5)
+ ",org.wso2.carbon.apimgt.impl.dao;version="[4.3,5)",org.wso2.carbon.a
+ pimgt.impl.internal;version="[4.3,5)",org.wso2.carbon.apimgt.impl.uti
+ ls;version="[4.3,5)",org.wso2.carbon.apimgt.interceptor,org.wso2.carb
+ on.apimgt.interceptor.utils,org.wso2.carbon.apimgt.interceptor.valve,
+ org.wso2.carbon.context;resolution:=optional;version="[4.3,5)",org.ws
+ o2.carbon.service.mgt;version="[4.3,5)"
+Bundle-SymbolicName: org.wso2.carbon.dssapi.core
+
