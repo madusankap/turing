@@ -1,0 +1,345 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax2143="http://mgt.service.carbon.wso2.org/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://admin.core.dataservices.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://core.dssapi.carbon.wso2.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://core.dssapi.carbon.wso2.org">
+    <wsdl:documentation>APIPublisher</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax2144="http://mgt.service.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://admin.core.dataservices.carbon.wso2.org">
+            <xs:import namespace="http://mgt.service.carbon.wso2.org/xsd"/>
+            <xs:element name="addApi">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="serviceId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addApiResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="apiAvailable">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="apiAvailableResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeApi">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="serviceId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeApiResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="APIPublisherException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="APIPublisherException" nillable="true" type="ns:Exception"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="Exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="listDssServices">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="searchString" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="pageNumber" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="listDssServicesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2143:ServiceMetaDataWrapper"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="viewSubscriptions">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="viewSubscriptionsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mgt.service.carbon.wso2.org/xsd">
+            <xs:complexType name="ServiceMetaDataWrapper">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="numberOfActiveServices" type="xs:int"/>
+                    <xs:element minOccurs="0" name="numberOfCorrectServiceGroups" type="xs:int"/>
+                    <xs:element minOccurs="0" name="numberOfFaultyServiceGroups" type="xs:int"/>
+                    <xs:element minOccurs="0" name="numberOfPages" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="serviceTypes" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="services" nillable="true" type="ax2143:ServiceMetaData"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceMetaData">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="active" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="disableDeletion" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="disableTryit" type="xs:boolean"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="eprs" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="foundWebResources" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="mtomStatus" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="operations" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="scope" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="securityScenarioId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="serviceDeployedTime" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="serviceGroupName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="serviceId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="serviceType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="serviceUpTime" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="serviceVersion" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="tryitURL" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="wsdlPortTypes" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="wsdlPorts" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="wsdlURLs" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="apiAvailableRequest">
+        <wsdl:part name="parameters" element="ns:apiAvailable"/>
+    </wsdl:message>
+    <wsdl:message name="apiAvailableResponse">
+        <wsdl:part name="parameters" element="ns:apiAvailableResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addApiRequest">
+        <wsdl:part name="parameters" element="ns:addApi"/>
+    </wsdl:message>
+    <wsdl:message name="addApiResponse">
+        <wsdl:part name="parameters" element="ns:addApiResponse"/>
+    </wsdl:message>
+    <wsdl:message name="removeApiRequest">
+        <wsdl:part name="parameters" element="ns:removeApi"/>
+    </wsdl:message>
+    <wsdl:message name="removeApiResponse">
+        <wsdl:part name="parameters" element="ns:removeApiResponse"/>
+    </wsdl:message>
+    <wsdl:message name="listDssServicesRequest">
+        <wsdl:part name="parameters" element="ns:listDssServices"/>
+    </wsdl:message>
+    <wsdl:message name="listDssServicesResponse">
+        <wsdl:part name="parameters" element="ns:listDssServicesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="APIPublisherException">
+        <wsdl:part name="parameters" element="ns:APIPublisherException"/>
+    </wsdl:message>
+    <wsdl:message name="viewSubscriptionsRequest">
+        <wsdl:part name="parameters" element="ns:viewSubscriptions"/>
+    </wsdl:message>
+    <wsdl:message name="viewSubscriptionsResponse">
+        <wsdl:part name="parameters" element="ns:viewSubscriptionsResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="APIPublisherPortType">
+        <wsdl:operation name="apiAvailable">
+            <wsdl:input message="tns:apiAvailableRequest" wsaw:Action="urn:apiAvailable"/>
+            <wsdl:output message="tns:apiAvailableResponse" wsaw:Action="urn:apiAvailableResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addApi">
+            <wsdl:input message="tns:addApiRequest" wsaw:Action="urn:addApi"/>
+            <wsdl:output message="tns:addApiResponse" wsaw:Action="urn:addApiResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="removeApi">
+            <wsdl:input message="tns:removeApiRequest" wsaw:Action="urn:removeApi"/>
+            <wsdl:output message="tns:removeApiResponse" wsaw:Action="urn:removeApiResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="listDssServices">
+            <wsdl:input message="tns:listDssServicesRequest" wsaw:Action="urn:listDssServices"/>
+            <wsdl:output message="tns:listDssServicesResponse" wsaw:Action="urn:listDssServicesResponse"/>
+            <wsdl:fault message="tns:APIPublisherException" name="APIPublisherException" wsaw:Action="urn:listDssServicesAPIPublisherException"/>
+        </wsdl:operation>
+        <wsdl:operation name="viewSubscriptions">
+            <wsdl:input message="tns:viewSubscriptionsRequest" wsaw:Action="urn:viewSubscriptions"/>
+            <wsdl:output message="tns:viewSubscriptionsResponse" wsaw:Action="urn:viewSubscriptionsResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="APIPublisherSoap11Binding" type="tns:APIPublisherPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="apiAvailable">
+            <soap:operation soapAction="urn:apiAvailable" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addApi">
+            <soap:operation soapAction="urn:addApi" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeApi">
+            <soap:operation soapAction="urn:removeApi" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listDssServices">
+            <soap:operation soapAction="urn:listDssServices" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="APIPublisherException">
+                <soap:fault use="literal" name="APIPublisherException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="viewSubscriptions">
+            <soap:operation soapAction="urn:viewSubscriptions" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="APIPublisherSoap12Binding" type="tns:APIPublisherPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="apiAvailable">
+            <soap12:operation soapAction="urn:apiAvailable" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addApi">
+            <soap12:operation soapAction="urn:addApi" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeApi">
+            <soap12:operation soapAction="urn:removeApi" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listDssServices">
+            <soap12:operation soapAction="urn:listDssServices" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="APIPublisherException">
+                <soap12:fault use="literal" name="APIPublisherException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="viewSubscriptions">
+            <soap12:operation soapAction="urn:viewSubscriptions" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="APIPublisherHttpBinding" type="tns:APIPublisherPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="apiAvailable">
+            <http:operation location="apiAvailable"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addApi">
+            <http:operation location="addApi"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeApi">
+            <http:operation location="removeApi"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listDssServices">
+            <http:operation location="listDssServices"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="viewSubscriptions">
+            <http:operation location="viewSubscriptions"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="APIPublisher">
+        <wsdl:port name="APIPublisherHttpsSoap11Endpoint" binding="tns:APIPublisherSoap11Binding">
+            <soap:address location="https://127.0.0.1:9443/services/APIPublisher.APIPublisherHttpsSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="APIPublisherHttpsSoap12Endpoint" binding="tns:APIPublisherSoap12Binding">
+            <soap12:address location="https://127.0.0.1:9443/services/APIPublisher.APIPublisherHttpsSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="APIPublisherHttpsEndpoint" binding="tns:APIPublisherHttpBinding">
+            <http:address location="https://127.0.0.1:9443/services/APIPublisher.APIPublisherHttpsEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
